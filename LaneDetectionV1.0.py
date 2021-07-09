@@ -184,8 +184,8 @@ class LaneDetection:
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Lane Detection V1.0")
-    parser.add_argument("--input_path", type=str, default="./Assets/1.jpg", help="Input path of image.")
-    parser.add_argument("--output_path", type=str, default="./Assets/1_out.jpg", help="Ouput path of image.")
+    parser.add_argument("--input_path", type=str, default="./Assets/project_video.mp4", help="Input path of image.")
+    parser.add_argument("--output_path", type=str, default="./Assets/project_video_out.mp4", help="Ouput path of image.")
     return parser.parse_args()
 
 
@@ -193,12 +193,52 @@ def main():
     args = parse_args()
 
     lanedetection = LaneDetection()
-    img = cv2.imread(args.input_path, 1)
-    res = lanedetection(img)
+    # jpg图片检测
+    if args.input_path.endswith('.jpg'):
+        img = cv2.imread(args.input_path, 1)
+        res = lanedetection(img)
 
-    # 拼接显示原图和结果图
-    x = np.hstack([img, res])
-    cv2.imwrite(args.output_path, x)
+        # 拼接显示原图和结果图
+        x = np.hstack([img, res])
+        cv2.imwrite(args.output_path, x)
+    # mp4视频检测
+    elif args.input_path.endswith('.mp4'):
+        # 创建一个视频读写类
+        video_capture = cv2.VideoCapture(args.input_path)
+        # video_capture = cv.VideoCapture(0)q
+        if not video_capture.isOpened():
+            print('Open is fasle!')
+            exit()
+        # 读取视频的fps,  大小
+        fps = video_capture.get(cv2.CAP_PROP_FPS)
+        size = (video_capture.get(cv2.CAP_PROP_FRAME_WIDTH), video_capture.get(cv2.CAP_PROP_FRAME_HEIGHT))
+        print("fps: {}\nsize: {}".format(fps, size))
+        print(help(cv2.VideoWriter))
+        out = cv2.VideoWriter(args.output_path, apiPreference=0, fourcc=cv2.VideoWriter_fourcc(*'mp4v'), fps=fps, frameSize=size)
+
+        # 读取视频时长（帧总数）
+        total = int(video_capture.get(cv2.CAP_PROP_FRAME_COUNT))
+        print("[INFO] {} total frames in video".format(total))
+
+        # 设定从视频的第几帧开始读取
+        frameToStart = 1000
+        video_capture.set(cv2.CAP_PROP_POS_FRAMES, frameToStart)
+
+        # 视频播放
+        while(True):
+            ret, frame = video_capture.read()
+
+            # frame = cv2.flip(frame,1)
+            res = lanedetection(frame)
+            out.write(res)
+
+            cv2.imshow("video", res)
+            # 键盘控制视频
+            if cv2.waitKey(100) & 0xFF == ord('q'):
+                break
+        video_capture.release()
+        out.release()
+        cv2.destroyAllWindows()
 
 
 if __name__ == "__main__":
