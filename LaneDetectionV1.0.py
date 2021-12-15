@@ -285,8 +285,8 @@ class LaneDetection:
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Lane Detection V1.0")
-    parser.add_argument("-i", "--input_path", type=str, default="./Assets/1.jpg", help="Input path of image.")
-    parser.add_argument("-o", "--output_path", type=str, default="./Assets/1_out.jpg", help="Ouput path of image.")
+    parser.add_argument("-i", "--input_path", type=str, default="./assets/1.jpg", help="Input path of image.")
+    parser.add_argument("-o", "--output_path", type=str, default="./assets/1_out.jpg", help="Ouput path of image.")
     return parser.parse_args()
 
 
