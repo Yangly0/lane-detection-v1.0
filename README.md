@@ -13,6 +13,7 @@
 - matplotlib
 - opencv-python
 - pyqt5 (option)
+- pyqt5-tools (option)
 
 ## Usage - 用法
 
