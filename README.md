@@ -13,7 +13,6 @@
 - matplotlib
 - opencv-python
 - pyqt5 (option)
-- pyqt5-tools (option)
 
 ## Usage - 用法
 
@@ -29,10 +28,21 @@ $ pip install -r requirements.txt
 
 ```bash
 # picture test
-$ python .\LaneDetectionV1.0.py -i ./assets/1.jpg -o ./Assets/1_out.jpg
+$ python .\lanedetection.py -i ./assets/1.jpg -o ./assets/1_out.jpg
 # video test 
-$ python .\LaneDetectionV1.0.py -i ./assets/project_video.mp4 -o ./Assets/project_video_out.mp4
+$ python .\lanedetection.py -i ./assets/project_video.mp4 -o ./assets/project_video_out.mp4
 ```
+
+3. Visualization.
+
+```bash
+# install package
+$ pip install pyqt5
+# run
+$ python mainwindow.py
+```
+
+
 
 ## Changelog - 更新日志
 
