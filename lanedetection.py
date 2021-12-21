@@ -2,7 +2,7 @@
 # -*- encoding: utf-8 -*-
 """
 ################################################################################
-@File              :   LaneDetectionV1.0.py
+@File              :   lanedetection.py
 @Time              :   2021/07/08 22:49:31
 @Author            :   liuyangly
 @Email             :   522927317@qq.com
@@ -69,9 +69,9 @@ class LaneDetection:
 
     Example::
         >>> lanedetection = LaneDetection()
-        >>> img = cv2.imread("./Assets/1.jpg", 1)
+        >>> img = cv2.imread("./assets/1.jpg", 1)
         >>> res = lanedetection(img)
-        >>> cv2.imwrite("./Assets/1_out.jpg", res)
+        >>> cv2.imwrite("./assets/1_out.jpg", res)
     """
 
     def __init__(

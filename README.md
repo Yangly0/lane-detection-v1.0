@@ -42,11 +42,9 @@ $ pip install pyqt5
 $ python mainwindow.py
 ```
 
-
-
 ## Changelog - 更新日志
 
-- Todo：可视化界面。
+- Done：可视化界面。
 
 ## License - 版权信息
 

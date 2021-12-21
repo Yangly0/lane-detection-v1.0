@@ -208,6 +208,7 @@ class Ui_MainWindow(QMainWindow):
 
       
 class VideoTimer(QThread):
+    # refetence: https://github.com/fengtangzheng/pyqt5-opencv-video
     _signal = pyqtSignal()
     def __init__(self):
         QThread.__init__(self)
