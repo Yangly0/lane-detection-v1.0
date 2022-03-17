@@ -16,7 +16,7 @@
 
 ## Usage - 用法
 
-1. Cone and install.
+1. Clone and install.
 
 ```bash
 $ git clone git@github.com:yangliuly1/LaneDetectionV1.0.git
